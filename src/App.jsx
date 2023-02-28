@@ -11,9 +11,8 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [label, setLabel] = useState('Dogs:');
-  const [addedDog, setAddedDog] = useState(null);
 
-  const getData = async () => {
+  const refetch = async () => {
     try {
       const response = await axios.get(
         `http://localhost:3000/dogs`
@@ -29,8 +28,8 @@ function App() {
   };
 
   useEffect(() => {
-    getData();
-  }, [dogsList, addedDog]);
+    refetch();
+  }, []);
 
   return (
     <div className="App">
@@ -43,8 +42,8 @@ function App() {
       {!loading &&
         <Section label={label} setLabel={setLabel} dogs={dogsList}>
           {label !== 'Create A Dog:' ? 
-          <Dogs label={label} dogsList={dogsList}/>
-          : <CreateDogForm setLabel={setLabel} setAddedDog={setAddedDog}/>}
+          <Dogs label={label} dogsList={dogsList} refetch={refetch}/>
+          : <CreateDogForm setLabel={setLabel} refetch={refetch}/>}
         </Section>
       }
     </div>

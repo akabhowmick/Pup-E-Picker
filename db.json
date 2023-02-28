@@ -1,25 +1,11 @@
 {
   "dogs": [
     {
-      "name": "Jadon",
-      "image": "/src/assets/blue-heeler.png",
-      "description": "aspernatur transmit Underpass female North tan music",
-      "isFavorite": false,
-      "id": 3
-    },
-    {
       "name": "Maribel",
       "image": "/src/assets/cowardly.png",
       "description": "Pants ohm Turcotte drive mole Southwest North Awesome",
       "isFavorite": false,
       "id": 4
-    },
-    {
-      "name": "Hunter",
-      "image": "/src/assets/boxer.png",
-      "description": "Cheese Handcrafted owlishly program TCP Sanford shadowy",
-      "isFavorite": false,
-      "id": 6
     },
     {
       "name": "Zara",
@@ -34,6 +20,13 @@
       "description": "Good boy, bad at bathroom",
       "isFavorite": true,
       "id": 1677390748246
+    },
+    {
+      "name": "Tea",
+      "image": "/src/assets/cowardly.png",
+      "description": "Hello",
+      "isFavorite": false,
+      "id": 1677390748247
     }
   ]
 }

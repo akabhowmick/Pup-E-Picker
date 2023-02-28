@@ -2,34 +2,32 @@ import { FavoriteButton } from "./FavoriteButton";
 import { TrashButton } from "./TrashButton";
 import { UnfavoriteButton } from "./UnfavoriteButton";
 import axios from "axios";
-import { useState} from "react";
 
 export const DogCard = ({
-  dog: { name, image, description, id, isFavorite },
+  dog: { name, image, description, id, isFavorite }, refetch
 }) => {
-
-  const [favMode, setFavMode] = useState(isFavorite)
 
   const toggleFav = () =>{
     const favToggleDog = {
       name: name,
       image: image,
       description: description,
-      isFavorite: !favMode,
+      isFavorite: !isFavorite,
       id: id
     }
     axios.put(`http://localhost:3000/dogs/${id}`, favToggleDog);
-    setFavMode(!favMode);
+    refetch();
   }
 
   const deleteDog = () =>{
     axios.delete(`http://localhost:3000/dogs/${id}`);
+    refetch();
   }
 
   return (
     <div className="dog-card">
       {/* Choose which button to show depending on if dog is a favorite */}
-      {favMode ? (
+      {isFavorite ? (
         <UnfavoriteButton onClick={toggleFav} dogId={id}/>
       ) : (
         <FavoriteButton onClick={toggleFav} dogId={id}/>

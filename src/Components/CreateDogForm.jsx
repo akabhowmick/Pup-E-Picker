@@ -2,7 +2,9 @@ import { useState } from "react";
 import { dogPictures } from "../assets/dog-pictures";
 import axios from "axios";
 
-export const CreateDogForm = ({ addDog, setLabel, setAddedDog}) => {
+export const CreateDogForm = ({ setLabel, refetch}) => {
+
+  //state needed because this is the added dog's info
   const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler);
   const [dogName, setDogName] = useState('');
   const [dogDesc, setDogDesc] = useState('');
@@ -13,7 +15,7 @@ export const CreateDogForm = ({ addDog, setLabel, setAddedDog}) => {
       id="create-dog-form"
       onSubmit={(e) => {
         e.preventDefault();
-        addDog = {
+        const addDog = {
           name: dogName,
           image: selectedImage,
           description: dogDesc,
@@ -21,7 +23,7 @@ export const CreateDogForm = ({ addDog, setLabel, setAddedDog}) => {
         }
         axios.post('http://localhost:3000/dogs', addDog);
         setLabel('Dogs:');
-        setAddedDog(addDog);
+        refetch();
       }}
     >
       <h4>Create a New Dog</h4>
